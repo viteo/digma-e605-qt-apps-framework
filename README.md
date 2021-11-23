@@ -7,6 +7,7 @@
 * [Example application](#example-application)
 * [Deploying](#deploying)
 * [Research](#research)
+  * [Android Debug Bridge Daemon](#android-debug-bridge-daemon-adb)
   * [Official Rockchip kernel](#official-rockchip-kernel)
     * [Generating the headers](#generating-the-headers)
   * [Keyboard input](#keyboard-input)
