@@ -209,6 +209,9 @@ The [firstapp](app/firstapp) directory contains an installation [script](app/fir
 
 ## Research
 
+### Android Debug Bridge Daemon (ADB)
+Gives you access to root shell. Copy file [`adbd.sh`](utils/adbd.sh) to internal memory and execute it from the reader's file manager (click once). Then connect to the reader with `adb shell`.
+
 ### Official Rockchip kernel
 
 Rockchip officially supports RK2818 under Linux: http://linux-rockchip.org.
