@@ -1,7 +1,11 @@
 #include "keypress.h"
-#include <QtGui/QApplication>
-#include <QtGui/QKeyEvent>
- 
+#include <QApplication>
+#include <QKeyEvent>
+extern "C"
+{
+#include "digma_hw.h"
+}
+
 KeyPress::KeyPress(QWidget *parent) :
     QWidget(parent)
 {
@@ -9,9 +13,8 @@ KeyPress::KeyPress(QWidget *parent) :
     mainLayout = new QVBoxLayout;
     mainLayout->addWidget(myLabel);
     setLayout(mainLayout);
- 
 }
- 
+
 void KeyPress::keyPressEvent(QKeyEvent *event)
 {
     switch (event->key()) {
@@ -21,6 +24,9 @@ void KeyPress::keyPressEvent(QKeyEvent *event)
     case Qt::Key_Return:
         myLabel->setText("You pressed OK");
         break;
+    case Qt::Key_F8:
+        QApplication::exit(); //properly quits application
+        return;
     case Qt::Key_F9:
         myLabel->setText("You pressed MENU");
         break;
@@ -43,6 +49,7 @@ void KeyPress::keyPressEvent(QKeyEvent *event)
     default:
         myLabel->setText("You pressed " + QKeySequence(event->key()).toString());
     }
+    epaperUpdate(EPAPER_UPDATE_AREA);
 }
  
 void KeyPress::keyReleaseEvent(QKeyEvent *event)
@@ -76,4 +83,5 @@ void KeyPress::keyReleaseEvent(QKeyEvent *event)
     default:
         myLabel->setText("You released " + QKeySequence(event->key()).toString());
     }
+    epaperUpdate(EPAPER_UPDATE_AREA);
 }
