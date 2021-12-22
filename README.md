@@ -245,6 +245,20 @@ NB: After the above commit, RK2818 support has been discontinued.
 ## Related works:
 * [eView](https://github.com/S-trace/eView) although it works only on GTK firmware.
 
+## Other possible devices
+<details>
+    <summary>List of devices based on boeye hardware and software</summary>
+
+- Boeye C60A, C60B (original devices)
+- Sibrary G5, G6, G10
+- Digma E500, E501, E600, E601, E625, Q1000
+- Gmini MagicBook Z6
+- DNS AirBook EB601
+- ORION EN600
+- QUMO Colibri, Libro, Libro II
+- Ergo Book 0502R, 0604R
+</details>
+
 ## References
 
 ##### Similar works:
@@ -252,6 +266,8 @@ NB: After the above commit, RK2818 support has been discontinued.
 
 ##### Rockchip platform:
 * [Another Android Rockchip device modification page](http://freaktab.com/forum/tv-player-support/rk3188-devices/minix-x7-etc/647213-tutorial-modifying-the-boot-image)
+
+##### Another possible devices:
 
 ##### QT:
 * [QT Wiki page from Rockchip](http://opensource.rock-chips.com/wiki_Qt)
