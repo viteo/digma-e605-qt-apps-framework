@@ -263,7 +263,8 @@ NB: After the above commit, RK2818 support has been discontinued.
 ## References
 
 ##### Similar works:
-* [eView, russian forum](http://www.the-ebook.org/forum/viewtopic.php?p=1040672#1040672)
+* [eView](https://github.com/S-trace/eView)
+* [qindle](https://code.google.com/archive/p/qindle/wikis/BoYueTechNote.wiki) the [source](https://github.com/Sparks192/qindle/tree/master/boeye/showip) code contains a class for screen updates
 
 ##### Rockchip platform:
 * [Another Android Rockchip device modification page](http://freaktab.com/forum/tv-player-support/rk3188-devices/minix-x7-etc/647213-tutorial-modifying-the-boot-image)

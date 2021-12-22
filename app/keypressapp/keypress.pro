@@ -4,10 +4,10 @@ DEPENDPATH += .
 INCLUDEPATH += .
 
 HEADERS       = keypress.h \
-                digma_hw.h
+                fbupdate.h
 SOURCES       = keypress.cpp \
                 main.cpp \
-                digma_hw.c
+                fbupdate.cpp
 
 #QMAKE_RPATHDIR += /usr/lib/boeye
 

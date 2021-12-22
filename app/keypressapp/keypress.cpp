@@ -1,10 +1,7 @@
 #include "keypress.h"
 #include <QApplication>
 #include <QKeyEvent>
-extern "C"
-{
-#include "digma_hw.h"
-}
+
 
 KeyPress::KeyPress(QWidget *parent) :
     QWidget(parent)
@@ -13,6 +10,10 @@ KeyPress::KeyPress(QWidget *parent) :
     mainLayout = new QVBoxLayout;
     mainLayout->addWidget(myLabel);
     setLayout(mainLayout);
+
+    this->fbupdate = new FBUpdate();
+    fbupdate->Init();
+    connect(this, SIGNAL(UpdateWindow(QRect)), this->fbupdate,SLOT(Update(QRect)));
 }
 
 void KeyPress::keyPressEvent(QKeyEvent *event)
@@ -25,7 +26,7 @@ void KeyPress::keyPressEvent(QKeyEvent *event)
         myLabel->setText("You pressed OK");
         break;
     case Qt::Key_F8:
-        QApplication::exit(); //properly quits application
+        QApplication::exit(); //"HOME" properly quits application
         return;
     case Qt::Key_F9:
         myLabel->setText("You pressed MENU");
@@ -49,7 +50,6 @@ void KeyPress::keyPressEvent(QKeyEvent *event)
     default:
         myLabel->setText("You pressed " + QKeySequence(event->key()).toString());
     }
-    epaperUpdate(EPAPER_UPDATE_AREA);
 }
  
 void KeyPress::keyReleaseEvent(QKeyEvent *event)
@@ -83,5 +83,10 @@ void KeyPress::keyReleaseEvent(QKeyEvent *event)
     default:
         myLabel->setText("You released " + QKeySequence(event->key()).toString());
     }
-    epaperUpdate(EPAPER_UPDATE_AREA);
+}
+
+void KeyPress::paintEvent(QPaintEvent *event)
+{
+    QRect region = event->rect();
+    emit(this->UpdateWindow(region));
 }
