@@ -7,6 +7,7 @@
 class KeyPress : public QWidget
 {
     Q_OBJECT
+
 public:
     KeyPress(QWidget *parent = 0);
  

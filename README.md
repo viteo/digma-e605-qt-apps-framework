@@ -7,6 +7,7 @@
 * [Example application](#example-application)
 * [Deploying](#deploying)
 * [Research](#research)
+  * [Android Debug Bridge Daemon](#android-debug-bridge-daemon-adb)
   * [Official Rockchip kernel](#official-rockchip-kernel)
     * [Generating the headers](#generating-the-headers)
   * [Keyboard input](#keyboard-input)
@@ -190,7 +191,7 @@ To build the toolchain we should use CentOS 6. One might use LiveCD, or Doker, o
 
 ## Example application
 
-[firstapp](app/firstapp), originally part of the QT distribution under demos/embedded/digiflip.
+[firstapp](app/firstapp), originally part of the QT examples under `widgets\widgets\digitalclock\`.
 
 ```
   cd ~/digma-e605-qt-apps-framework/app/firstapp
