@@ -52,6 +52,7 @@
 #define DIGITALCLOCK_H
 
 #include <QLCDNumber>
+#include "fbupdate.h"
 
 class DigitalClock : public QLCDNumber
 {
@@ -60,8 +61,18 @@ class DigitalClock : public QLCDNumber
 public:
     DigitalClock(QWidget *parent = 0);
 
+signals:
+    void UpdateWindow(QRect region);
+
+protected:
+    void keyPressEvent(QKeyEvent *);
+    void paintEvent(QPaintEvent *);
+
 private slots:
     void showTime();
+
+private:
+    FBUpdate *fbupdate;
 };
 
 #endif

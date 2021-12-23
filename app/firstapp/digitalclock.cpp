@@ -49,26 +49,27 @@
 ****************************************************************************/
 
 #include "digitalclock.h"
-
 #include <QTime>
 #include <QTimer>
-extern "C" {
-#include "digma_hw.h"
-}
+#include <QKeyEvent>
+#include <QApplication>
+#include <QDebug>
 
 DigitalClock::DigitalClock(QWidget *parent)
     : QLCDNumber(parent)
 {
     setSegmentStyle(Filled);
 
-    QTimer *timer = new QTimer(this);
-    connect(timer, SIGNAL(timeout()), SLOT(showTime()));
-    timer->start(5000); // refresh time ms
-
-    showTime();
-
     setWindowTitle(tr("Digital Clock"));
     resize(320, 240);
+
+    QTimer *timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()), this, SLOT(showTime()));
+    timer->start(5000); // refresh time ms
+
+    this->fbupdate = new FBUpdate();
+    fbupdate->Init();
+    connect(this, SIGNAL(UpdateWindow(QRect)), this->fbupdate,SLOT(Update(QRect)));
 }
 
 void DigitalClock::showTime()
@@ -83,5 +84,22 @@ void DigitalClock::showTime()
     isDot = !isDot;
 
     display(text);
-    epaperUpdate(EPAPER_UPDATE_FULL);
+    qDebug()<<text;
+}
+
+void DigitalClock::keyPressEvent(QKeyEvent *event)
+{
+    switch (event->key()) {
+    case Qt::Key_Escape:
+    case Qt::Key_F8:
+        QApplication::exit();
+        return;
+    }
+}
+
+void DigitalClock::paintEvent(QPaintEvent *event)
+{
+    QLCDNumber::paintEvent(event); //call base class event
+    QRect rect = event->rect();
+    emit(UpdateWindow(rect));
 }

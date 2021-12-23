@@ -4,8 +4,9 @@ DEPENDPATH += .
 INCLUDEPATH += .
 
 HEADERS       = digitalclock.h \
-                digma_hw.h
+                fbupdate.h
 SOURCES       = digitalclock.cpp \
-                digma_hw.c \
-                main.cpp
+                main.cpp \
+                fbupdate.cpp
 
+QMAKE_CXXFLAGS += -Wno-psabi # skip warning "the mangling of 'va_list' has changed in GCC 4.4"
