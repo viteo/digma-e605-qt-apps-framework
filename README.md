@@ -300,7 +300,7 @@ NB: After the above commit, RK2818 support has been discontinued.
   - [ ] LED control
   - [x] keyboard and backlight checks
   - [ ] networking, whatever that might mean for the platform
-  - [x] partial display refresh (see [imdemoapp/main.cpp](app/imdemoapp/main.cpp))
+  - [x] partial display refresh
   - [ ] lots of other stuff from */usr/lib/boeye/libboeye.so*
   - [ ] virtual keyboard, as it appears to be a singleton object, held by the boeyeserver process, so I wonder if one could use it in own applications?
 - [ ] rectify linking to Boeye's shared libraries as currently it's a hack.
