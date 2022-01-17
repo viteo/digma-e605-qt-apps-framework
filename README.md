@@ -11,7 +11,7 @@
   * [Official Rockchip kernel](#official-rockchip-kernel)
     * [Generating the headers](#generating-the-headers)
   * [Keyboard input](#keyboard-input)
-* [Related works](#related-works)
+* [Other possibly compatible devices](#other-possibly-compatible-devices)
 * [References](#references)
 * [TODO](#todo)
 
@@ -243,10 +243,7 @@ NB: After the above commit, RK2818 support has been discontinued.
   The Virtual keyboard is implemented in */usr/lib/boeye/libboeyeim.so*, see
   the [IM demo application](app/imdemoapp).
 
-## Related works:
-* [eView](https://github.com/S-trace/eView) although it works only on GTK firmware.
-
-## Other possible devices
+## Other possibly compatible devices
 <details>
     <summary>List of devices based on boeye hardware and software</summary>
 
@@ -263,8 +260,8 @@ NB: After the above commit, RK2818 support has been discontinued.
 ## References
 
 ##### Similar works:
-* [eView](https://github.com/S-trace/eView)
-* [qindle](https://code.google.com/archive/p/qindle/wikis/BoYueTechNote.wiki) the [source](https://github.com/Sparks192/qindle/tree/master/boeye/showip) code contains a class for screen updates
+* [eView](https://github.com/S-trace/eView), although it works on GTK backend
+* [qindle](https://code.google.com/archive/p/qindle/wikis/BoYueTechNote.wiki), the [source](https://github.com/Sparks192/qindle/tree/master/boeye/showip) code contains a class for screen updates
 
 ##### Rockchip platform:
 * [Another Android Rockchip device modification page](http://freaktab.com/forum/tv-player-support/rk3188-devices/minix-x7-etc/647213-tutorial-modifying-the-boot-image)
@@ -298,13 +295,13 @@ NB: After the above commit, RK2818 support has been discontinued.
 * SHA1: af9016aa924a577f7b06ffd28c9773b56d74c939
 
 ## TODO:
-- [ ] Refresh issues - the application is not visible after start, unless the screen is forcibly refreshed. NB: Currently the refresh itself doesn't seem to work even through stock device library methods (ProxyScreen class).
-- [ ] Put together a demo application to see how the following works:
-  - [ ] LED control (see [firstapp/digma_hw.c](app/firstapp/digma_hw.c) for details)
-  - [ ] keyboard and backlight checks,
-  - [ ] networking, whatever that might mean for the platform,
-  - [ ] partial display refresh (see [imdemoapp/main.cpp](app/imdemoapp/main.cpp)),
-  - [ ] lots of other stuff from */usr/lib/boeye/libboeye.so*.
+- [x] ~~Refresh issues - the application is not visible after start, unless the screen is forcibly refreshed. NB: Currently the refresh itself doesn't seem to work even through stock device library methods (ProxyScreen class).~~
+- [ ] Put together a demo applications to see how the following works:
+  - [ ] LED control
+  - [x] keyboard and backlight checks
+  - [ ] networking, whatever that might mean for the platform
+  - [x] partial display refresh (see [imdemoapp/main.cpp](app/imdemoapp/main.cpp))
+  - [ ] lots of other stuff from */usr/lib/boeye/libboeye.so*
   - [ ] virtual keyboard, as it appears to be a singleton object, held by the boeyeserver process, so I wonder if one could use it in own applications?
 - [ ] rectify linking to Boeye's shared libraries as currently it's a hack.
 - [ ] dig a bit deeper int the DBUS messaging, in particular *com.sibrary.Service.GlobalKey*.
